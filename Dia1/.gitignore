@@ -1,0 +1,9 @@
+# Dependências (recriadas com npm install)
+node_modules/
+
+# Banco alterado pelos testes (cada aluno tem o seu)
+# db.json
+
+# Logs e sistema
+*.log
+.DS_Store

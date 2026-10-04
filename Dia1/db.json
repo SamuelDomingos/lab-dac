@@ -1,0 +1,114 @@
+{
+  "bandas": [
+    {
+      "id": 1,
+      "nome": "Legião Urbana",
+      "estilo": "rock",
+      "pais": "Brasil",
+      "ano": 1982,
+      "ouvintes": 12
+    },
+    {
+      "id": 2,
+      "nome": "Metallica",
+      "estilo": "metal",
+      "pais": "EUA",
+      "ano": 1981,
+      "ouvintes": 35
+    },
+    {
+      "id": 3,
+      "nome": "Guns N' Roses",
+      "estilo": "rock",
+      "pais": "EUA",
+      "ano": 1985,
+      "ouvintes": 33
+    },
+    {
+      "id": 4,
+      "nome": "Titãs",
+      "estilo": "rock",
+      "pais": "Brasil",
+      "ano": 1982,
+      "ouvintes": 7
+    },
+    {
+      "id": 5,
+      "nome": "Nirvana",
+      "estilo": "rock",
+      "pais": "EUA",
+      "ano": 1987,
+      "ouvintes": 30
+    },
+    {
+      "id": 6,
+      "nome": "Pearl Jam",
+      "estilo": "rock",
+      "pais": "EUA",
+      "ano": 1990,
+      "ouvintes": 18
+    },
+    {
+      "id": 7,
+      "nome": "Oasis",
+      "estilo": "rock",
+      "pais": "Reino Unido",
+      "ano": 1991,
+      "ouvintes": 22
+    },
+    {
+      "id": 8,
+      "nome": "Skank",
+      "estilo": "pop",
+      "pais": "Brasil",
+      "ano": 1991,
+      "ouvintes": 10
+    },
+    {
+      "id": 9,
+      "nome": "Pitty",
+      "estilo": "rock",
+      "pais": "Brasil",
+      "ano": 2003,
+      "ouvintes": 6
+    },
+    {
+      "id": 10,
+      "nome": "Arctic Monkeys",
+      "estilo": "rock",
+      "pais": "Reino Unido",
+      "ano": 2002,
+      "ouvintes": 25
+    },
+    {
+      "id": 11,
+      "nome": "Daft Punk",
+      "estilo": "eletronica",
+      "pais": "França",
+      "ano": 1993,
+      "ouvintes": 31
+    }
+  ],
+  "estilos": [
+    {
+      "id": 1,
+      "nome": "rock",
+      "descricao": "Guitarras, bateria e refrãos para cantar junto"
+    },
+    {
+      "id": 2,
+      "nome": "metal",
+      "descricao": "Peso, velocidade e solos virtuosos"
+    },
+    {
+      "id": 3,
+      "nome": "pop",
+      "descricao": "Melodias grudentas e produção polida"
+    },
+    {
+      "id": 4,
+      "nome": "eletronica",
+      "descricao": "Sintetizadores, beats e pista de dança"
+    }
+  ]
+}
