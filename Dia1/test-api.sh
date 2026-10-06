@@ -68,4 +68,4 @@ curl -s -X POST "$BASE/bandas" -H "Content-Type: application/json" \
   -d '{"nome":"Banda Sem Estilo"}' -w " [%{http_code}]"; echo
 
 echo ""
-echo "Fim! Compare com a collection do Thunder Client: mesmos testes, outra ferramenta."
+echo "Fim! Compare com o arquivo requests.http (REST Client): mesmos testes, outra ferramenta."

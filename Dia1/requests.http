@@ -1,0 +1,89 @@
+# ============================================================================
+# API Minhas Bandas — 14 testes para o REST Client (extensão humao.rest-client)
+#
+# COMO USAR:
+#   1. Instale a extensão "REST Client" (humao.rest-client) no VS Code
+#   2. Suba os servidores em 2 terminais:  npm run db  |  npm run dev
+#   3. Abra este arquivo e clique em "Send Request" sobre cada requisição
+#
+# O QUE OBSERVAR: a resposta abre em outra aba com status + headers + JSON.
+#   200 ok · 201 criado · 204 apagado (sem corpo) · 400 pedido inválido ·
+#   404 não existe · 500 banco fora do ar
+#
+# DICA: edite URL, query ou JSON direto no arquivo e mande de novo — é assim
+# que se testa API sem frontend, tudo versionado no repositório.
+# ============================================================================
+
+@baseurl = http://localhost:3000
+
+### 01 - Raiz (cartão de visita da API) → 200
+GET {{baseurl}}/
+
+### 02 - Health (API + banco vivos?) → 200
+GET {{baseurl}}/health
+
+### 03 - Listar bandas → 200
+GET {{baseurl}}/bandas
+
+### 04 - Filtrar por estilo → 200
+GET {{baseurl}}/bandas?estilo=rock
+
+### 05 - Filtrar por país → 200
+GET {{baseurl}}/bandas?pais=Brasil
+
+### 06 - Buscar por id → 200
+GET {{baseurl}}/bandas/5
+
+### 07 - Listar estilos → 200
+GET {{baseurl}}/estilos
+
+### 08 - Destaques (regra: 30+ milhões de ouvintes) → 200
+GET {{baseurl}}/destaques
+
+### 09 - Cadastrar banda → 201
+# Rode esta ANTES das 10, 11 e 12: o id criado aqui é reutilizado abaixo.
+POST {{baseurl}}/bandas
+Content-Type: application/json
+
+{
+  "nome": "CPM 22",
+  "estilo": "rock",
+  "pais": "Brasil",
+  "ano": 1995,
+  "ouvintes": 4
+}
+
+### 10 - Trocar a banda inteira (PUT) → 200
+# {% client.response.body.id %} pega o id devolvido pela requisição 09
+PUT {{baseurl}}/bandas/{% client.response.body.id %}
+Content-Type: application/json
+
+{
+  "nome": "CPM 22",
+  "estilo": "rock",
+  "pais": "Brasil",
+  "ano": 1995,
+  "ouvintes": 7
+}
+
+### 11 - Atualizar só um pedaço (PATCH) → 200
+PATCH {{baseurl}}/bandas/{% client.response.body.id %}
+Content-Type: application/json
+
+{
+  "ouvintes": 8
+}
+
+### 12 - Apagar a banda (DELETE) → 204 (sem corpo)
+DELETE {{baseurl}}/bandas/{% client.response.body.id %}
+
+### 13 - Erro 404 (banda 999 não existe) → 404
+GET {{baseurl}}/bandas/999
+
+### 14 - Erro 400 (POST sem estilo) → 400
+POST {{baseurl}}/bandas
+Content-Type: application/json
+
+{
+  "nome": "Banda Sem Estilo"
+}

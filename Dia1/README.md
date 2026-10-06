@@ -6,7 +6,8 @@ Backend de exemplo: app de **bandas de rock (anos 80, 90 e 2000)** com
 ## Pré-requisitos
 
 - Node.js LTS instalado (`node --version`)
-- Extensão **Thunder Client** no VS Code
+- Extensão **REST Client** no VS Code (`humao.rest-client`) — a ferramenta
+  preferencial da prática (o curl e as collections continuam disponíveis)
 
 ## Como rodar (2 terminais)
 
@@ -28,11 +29,14 @@ npm run dev
 
 ## Testar
 
-### Opção A — Thunder Client (visual)
+### Opção A (preferencial) — REST Client (dentro do VS Code)
 
-1. Abra `http://localhost:3000` no navegador.
-2. No VS Code, importe `thunder-collection_dac-aula06.json` no Thunder Client
-   (coleção → `...` → Import) e execute cada requisição.
+1. Instale a extensão **REST Client** (`humao.rest-client`) no VS Code.
+2. Abra o arquivo [`requests.http`](requests.http) — as **14 requisições**
+   já estão escritas ali.
+3. Clique em **Send Request** que aparece sobre cada requisição: a resposta
+   (status + headers + JSON) abre em outra aba do editor.
+4. Edite URL, query ou corpo JSON direto no arquivo e mande de novo.
 
 ### Opção B — Terminal com curl (script)
 

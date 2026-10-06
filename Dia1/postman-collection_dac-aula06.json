@@ -1,0 +1,234 @@
+{
+  "info": {
+    "_postman_id": "f231345c-45e1-4496-acd0-59595d1d9c26",
+    "name": "DAC Aula 06 - API Minhas Bandas",
+    "description": "Mesmas 14 requests do requests.http (REST Client). Variável baseUrl = http://localhost:3000. Suba o banco (npm run db :3001) e a API (npm run dev :3000) antes de executar.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Raiz",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        },
+        "description": "GET / — 200 cartão de visitas da API"
+      },
+      "response": []
+    },
+    {
+      "name": "02 - Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        },
+        "description": "GET /health — 200 API + banco vivos? 500 se json-server fora do ar"
+      },
+      "response": []
+    },
+    {
+      "name": "03 - Listar bandas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/bandas",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas"]
+        },
+        "description": "GET /bandas — 200 lista tudo"
+      },
+      "response": []
+    },
+    {
+      "name": "04 - Filtrar por estilo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/bandas?estilo=rock",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas"],
+          "query": [{ "key": "estilo", "value": "rock" }]
+        },
+        "description": "GET /bandas?estilo=rock — 200 filtro simples"
+      },
+      "response": []
+    },
+    {
+      "name": "05 - Filtrar por pais",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/bandas?pais=Brasil",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas"],
+          "query": [{ "key": "pais", "value": "Brasil" }]
+        },
+        "description": "GET /bandas?pais=Brasil — 200 filtro simples"
+      },
+      "response": []
+    },
+    {
+      "name": "06 - Buscar por id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/bandas/5",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas", "5"]
+        },
+        "description": "GET /bandas/5 — 200 uma banda, 404 se não existir"
+      },
+      "response": []
+    },
+    {
+      "name": "07 - Listar estilos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/estilos",
+          "host": ["{{baseUrl}}"],
+          "path": ["estilos"]
+        },
+        "description": "GET /estilos — 200 estilos musicais"
+      },
+      "response": []
+    },
+    {
+      "name": "08 - Destaques",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/destaques",
+          "host": ["{{baseUrl}}"],
+          "path": ["destaques"]
+        },
+        "description": "GET /destaques — 200 regra de negócio: 30+ milhões de ouvintes"
+      },
+      "response": []
+    },
+    {
+      "name": "09 - Cadastrar banda",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/bandas",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"CPM 22\",\n  \"estilo\": \"rock\",\n  \"pais\": \"Brasil\",\n  \"ano\": 1995,\n  \"ouvintes\": 4\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "description": "POST /bandas — 201 criado, 400 sem nome/estilo"
+      },
+      "response": []
+    },
+    {
+      "name": "10 - Trocar banda inteira (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/bandas/9",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas", "9"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Pitty\",\n  \"estilo\": \"rock\",\n  \"pais\": \"Brasil\",\n  \"ano\": 2003,\n  \"ouvintes\": 7\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "description": "PUT /bandas/9 — 200 troca completa, 400/404 em erro"
+      },
+      "response": []
+    },
+    {
+      "name": "11 - Atualizar parcial (PATCH)",
+      "request": {
+        "method": "PATCH",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/bandas/9",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas", "9"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ouvintes\": 8\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "description": "PATCH /bandas/9 — 200 atualiza só campos enviados"
+      },
+      "response": []
+    },
+    {
+      "name": "12 - Apagar banda (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/bandas/9",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas", "9"]
+        },
+        "description": "DELETE /bandas/9 — 204 sem corpo, 404 se não existir"
+      },
+      "response": []
+    },
+    {
+      "name": "13 - Erro 404 (id inexistente)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/bandas/999",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas", "999"]
+        },
+        "description": "GET /bandas/999 — 404 Banda não encontrada"
+      },
+      "response": []
+    },
+    {
+      "name": "14 - Erro 400 (sem estilo)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/bandas",
+          "host": ["{{baseUrl}}"],
+          "path": ["bandas"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Banda Sem Estilo\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "description": "POST /bandas sem estilo — 400 Campos obrigatórios: nome e estilo"
+      },
+      "response": []
+    }
+  ]
+}
