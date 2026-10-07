@@ -1,11 +1,4 @@
-// ============================================================================
-// DAC — Aula 06: Backend com Node + Express
-// App de MÚSICAS: este servidor NÃO guarda nada em memória. Ele conversa com
-// o json-server (o nosso "banco de dados" da aula) e adiciona FILTROS e
-// REGRAS DE NEGÓCIO por cima.
-// Suba primeiro o banco:  npm run db     (porta 3001)
-// Depois a API:            npm run dev    (porta 3000)
-// ============================================================================
+
 const express = require('express');
 const cors = require('cors');
 
